@@ -1,12 +1,35 @@
-import { Component } from '@angular/core';
+import { NgClass } from '@angular/common';
+import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-contact',
   standalone: true,
-  imports: [],
+  imports: [ReactiveFormsModule, NgClass],
   templateUrl: './contact.component.html',
-  styleUrl: './contact.component.css'
+  styleUrl: './contact.component.css',
 })
-export class ContactComponent {
 
+export class ContactComponent implements OnInit{
+  
+  contactForm: FormGroup;
+  
+  constructor(private formBuilder: FormBuilder) {
+    this.contactForm = formBuilder.group({
+      email: ['', [Validators.required, Validators.email]],
+      message: ['', [Validators.required, Validators.minLength(10)]]
+    })
+  }
+  
+  ngOnInit(): void {
+  }
+  
+  send($event: Event) {
+    $event.preventDefault();
+    console.log(this.contactForm);
+  }
+
+  hasErrors(field: string, typeError: string): any {
+    return this.contactForm.get(field)?.hasError(typeError) && this.contactForm.get(field)?.touched;
+  }
 }
