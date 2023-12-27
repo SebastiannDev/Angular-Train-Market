@@ -1,0 +1,24 @@
+@if (loading) {
+<b>Loading...</b>
+}@else {
+<h1>Our products: </h1>
+<div class="container">
+    <div class="row">
+        @for (product of productList; track $index) {
+        <div class="col-sm-12 col-md-5 m-3">
+            <div class="card h-100">
+                <div class="card-head product-img d-flex mt-5 mx-3">
+                    <img class="w-25" src="{{ product.image }}" alt="{{ product.title }}">
+                </div>
+                <div class="card-body">
+                    <h3>{{ product.title | slice:0:25 }}</h3>
+                    <p>{{ product.description | slice:0:25 }}</p>
+                    <p>{{ product.price | currency}}</p>
+                </div>
+                <button class="btn btn-info" type="button" (click)="navegate(product.id)">Details</button>
+            </div>
+        </div>
+        }
+    </div>
+</div>
+}

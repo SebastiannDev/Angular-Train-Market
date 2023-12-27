@@ -1,0 +1,14 @@
+@if (loading) {
+<b>Loading...</b>
+}@else {
+<div class="container d-flex justify-content-center pt-5">
+    <div class="card d-flex align-items-center" style="width: 18rem;">
+        <img class="w-50" src="{{ product?.image }}" alt="{{ product?.title }}">
+        <div class="card-body">
+            <h4>{{ product?.price | currency}}</h4>
+            <h5 class="card-title">{{ product?.title }}</h5>
+            <p class="card-text">{{ product?.description }}</p>
+        </div>
+    </div>
+</div>
+}
