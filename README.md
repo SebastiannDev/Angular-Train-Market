@@ -20,7 +20,7 @@ Show the informatión about of the product selected, it use an identifier (ID) t
 Use a form to get data and description for contact propourses.
 
 > [!TIP]
-> This app use fetch data of an fake website of products.
+> This app use fetch data of a fake website of products.
 
 ## Url Fake Api
 ```
